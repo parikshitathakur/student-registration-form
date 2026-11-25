@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enrolment Desk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card-container">
+        <h3>ACADEMIC ENROLMENT DESK (T2)</h3>
+        <form id="entryForm">
+            <label for="usr">Candidate Name</label>
+            <input type="text" id="usr" required>
+            <label for="contact">Phone (10 Digits)</label>
+            <input type="tel" id="contact" pattern="[0-9]{10}" required>
+            <label for="prog">Selected Track</label>
+            <select id="prog" required>
+                <option value="CS">Computer Science</option>
+                <option value="DS">Data Science</option>
+            </select>
+            <button type="submit">Submit Entry</button>
+        </form>
+        <div id="notify"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

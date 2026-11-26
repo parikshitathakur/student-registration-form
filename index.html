@@ -2,25 +2,293 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Enrolment Desk</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="style.css?v=2">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #1c1033;
+            background-color: #1c1033;
+            color: #f3e8ff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px 16px;
+        }
+
+        .form-wrapper {
+            background: #2b184d;
+            border: 2px solid #583394;
+            border-radius: 12px;
+            padding: 28px 24px;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(147, 51, 234, 0.2);
+        }
+
+        .form-header {
+            margin-bottom: 22px;
+            text-align: center;
+        }
+
+        .form-header h2 {
+            color: #f3e8ff;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #d8b4fe;
+            font-size: 0.88rem;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #e9d5ff;
+            margin-bottom: 6px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px 12px;
+            background: #160c2b;
+            border: 1.5px solid #5d3599;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.92rem;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input::placeholder {
+            color: #a78bfa;
+            opacity: 0.7;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #c084fc;
+            box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.3);
+            background: #1c1033;
+        }
+
+        select option {
+            background: #2b184d;
+            color: #f3e8ff;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        button {
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            transition: all 0.15s ease;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            flex: 1.2;
+            background: #9333ea !important;
+            color: #ffffff !important;
+        }
+
+        .btn-primary:hover {
+            background: #7e22ce !important;
+        }
+
+        .btn-secondary {
+            flex: 1;
+            background: #4c267a !important;
+            color: #f3e8ff !important;
+            border: 1px solid #7e3eb8 !important;
+        }
+
+        .btn-secondary:hover {
+            background: #5d3194 !important;
+            color: #ffffff !important;
+        }
+
+        .btn-clear {
+            background: #581c87 !important;
+            color: #fbcfe8 !important;
+            border: 1px solid #7e22ce !important;
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .btn-clear:hover {
+            background: #701a75 !important;
+        }
+
+        .status-message {
+            margin-top: 14px;
+            font-size: 0.88rem;
+            min-height: 20px;
+            text-align: center;
+            color: #86efac;
+            font-weight: 500;
+        }
+
+        .records-section {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid #583394;
+        }
+
+        .records-section.hidden {
+            display: none;
+        }
+
+        .records-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .records-header h3 {
+            font-size: 0.98rem;
+            color: #e9d5ff;
+            font-weight: 600;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border: 1px solid #583394;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            text-align: left;
+        }
+
+        th {
+            background: #3e226e;
+            color: #f3e8ff;
+            padding: 8px 10px;
+            font-weight: 600;
+            border-bottom: 1px solid #583394;
+        }
+
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #452478;
+            color: #f3e8ff;
+        }
+
+        tr:nth-child(even) td {
+            background: #241442;
+        }
+
+        tr:nth-child(odd) td {
+            background: #2b184d;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .empty-notice {
+            text-align: center;
+            padding: 16px 8px;
+            font-size: 0.84rem;
+            color: #c084fc;
+        }
+
+        .empty-notice.hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="card-container">
-        <h3>ACADEMIC ENROLMENT DESK (T2)</h3>
+    <div class="form-wrapper">
+        <div class="form-header">
+            <h2>Student Registration Form</h2>
+            <p class="subtitle">First Year CSE - Practical Lab Project</p>
+        </div>
+
         <form id="entryForm">
-            <label for="usr">Candidate Name</label>
-            <input type="text" id="usr" required>
-            <label for="contact">Phone (10 Digits)</label>
-            <input type="tel" id="contact" pattern="[0-9]{10}" required>
-            <label for="prog">Selected Track</label>
-            <select id="prog" required>
-                <option value="CS">Computer Science</option>
-                <option value="DS">Data Science</option>
-            </select>
-            <button type="submit">Submit Entry</button>
+            <div class="input-group">
+                <label for="usr">Full Name</label>
+                <input type="text" id="usr" placeholder="Enter student name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="contact">Phone Number</label>
+                <input type="tel" id="contact" pattern="[0-9]{10}" placeholder="10-digit phone number" required>
+            </div>
+
+            <div class="input-group">
+                <label for="prog">Branch / Course</label>
+                <select id="prog" required>
+                    <option value="" disabled selected>-- Select Branch --</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Artificial Intelligence">Artificial Intelligence</option>
+                </select>
+            </div>
+
+            <div class="action-buttons">
+                <button type="submit" id="submitBtn" class="btn-primary">Register Student</button>
+                <button type="button" id="memoryBtn" class="btn-secondary">View Saved Records</button>
+            </div>
         </form>
-        <div id="notify"></div>
+
+        <div id="notify" class="status-message"></div>
+
+        <div id="memoryContainer" class="records-section hidden">
+            <div class="records-header">
+                <h3>Registered Students (<span id="recordCount">0</span>)</h3>
+                <button type="button" id="clearMemoryBtn" class="btn-clear">Clear All</button>
+            </div>
+            
+            <div class="table-responsive">
+                <table id="recordsTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Branch</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recordsBody"></tbody>
+                </table>
+            </div>
+            <div id="emptyNotice" class="empty-notice">No student records saved yet.</div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

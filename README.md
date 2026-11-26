@@ -1,14 +1,16 @@
 # Student Registration Form
 
-A simple, responsive student registration form built with HTML, CSS, and JavaScript as part of First Year CSE web development coursework.
+A simple web form created for practicing HTML, CSS, and basic JavaScript.
 
-## Features
-- Client-side validation for student name, 10-digit phone number, and branch selection.
-- View Saved Records: In-browser table displaying registered candidates stored via localStorage.
-- Clear All option to reset session data.
+### Features
+- Enter student name, 10-digit phone number, and select branch
+- Form validation (checks if fields are filled properly)
+- View Saved Records button to show registered students
+- Clear all saved records
 
-## How to Run
-Open `index.html` in any modern web browser.
+### How to Run
+Just open `index.html` in any web browser.
 
-## Live Demo
+### Live Link
+You can try it live here:  
 https://parikshitathakur.github.io/student-registration-form/
